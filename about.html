@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | STUDIO-CC</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Section Divider Styles */
+      .section-divider {
+        position: relative;
+        width: 100%;
+        padding: 3rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .divider-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .divider-line {
+        height: 1px;
+        flex-grow: 1;
+        background: linear-gradient(to right, transparent, rgba(0,0,0,0.2), transparent);
+      }
+
+      .divider-icon {
+        margin: 0 1.5rem;
+        opacity: 0.6;
+        transform: rotate(45deg);
+        transition: transform 0.5s ease;
+      }
+
+      .divider-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin: 0 1.5rem;
+        white-space: nowrap;
+      }
+
+      .divider-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.3);
+        margin: 0 1rem;
+      }
+
+      .section-divider:hover .divider-icon {
+        transform: rotate(225deg);
+      }
+
+      .scroll-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        opacity: 0.6;
+      }
+
+      .indicator-line {
+        width: 1px;
+        height: 3rem;
+        background-color: rgba(0,0,0,0.3);
+        position: relative;
+      }
+
+      .indicator-line::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.5);
+      }
+
+      .indicator-label {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 768px) {
+        .section-divider {
+          padding: 2rem 0;
+        }
+
+        .divider-text {
+          font-size: 0.7rem;
+          margin: 0 0.8rem;
+        }
+
+        .divider-icon {
+          margin: 0 0.8rem;
+        }
+
+        .scroll-indicator {
+          margin-top: -0.5rem;
+        }
+
+        .indicator-line {
+          height: 2rem;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <div id="cursor" class="cursor"></div>
+        <div id="page1" class="w-full">
+            <div class="page1Container md:w-full md:h-screen pt-4">
+                <div class="navigation transition-all duration-300 top-0 fixed w-full z-10 backdrop-blur-md bg-[#F6F6F6]/80 px-4">
+                    <nav class="flex justify-between items-center py-2 border-b-[1px] border-black">
+                      <a href="./index.html" class="relative group">
+                        <img class="md:h-[2vw] h-[8vw]" src="./public/logo.png" alt="">
+                        <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                      </a>
+                      <!-- Links for desktop -->
+
+                      <div class="links hidden md:flex mr-[30vw] gap-5 text-[14px] font-medium tracking-wide">
+                        <div class="flex ">
+                          <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
+                          <a href="./work.html" class="flex items-center relative group hover:text-gray-800 transition-colors duration-300">
+                            Portfolio
+                            <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                          </a>
+                        </div>
+                        <div class="flex">
+                          <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
+                          <a href="./about.html" class="flex items-center relative group hover:text-gray-800 transition-colors duration-300">
+                            About Me
+                            <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                          </a>
+                        </div>
+                        <div class="flex">
+                          <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
+                          <a href="./contact.html" class="flex items-center relative group hover:text-gray-800 transition-colors duration-300">
+                            Get in Touch
+                            <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- Hamburger icon for mobile -->
+
+                      <div class="block md:hidden">
+                        <button id="hamburger" class="hamburger-menu text-[1.5rem] focus:outline-none">
+                          ☰
+                        </button>
+                      </div>
+                    </nav>
+                  </div>
+                  <!-- Overlay (hidden initially, only for mobile) -->
+                  <div id="overlay" class="fixed inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none md:hidden"></div>
+
+                  <!-- Side Navbar with close Icon -->
+                  <div id="sideNav" class="fixed top-0 h-full w-full z-[11] bg-[#F6F6F6] shadow-lg transform -translate-y-full transition-transform duration-300 md:hidden">
+                    <div class="p-5 flex flex-col justify-center items-center text-[8vw]">
+                      <button id="closeNav" class="text-[1.5rem] mb-4 focus:outline-none self-end">
+                        ✕
+                      </button>
+                      <a href="./work.html" class="block py-2">Work</a>
+                      <a href="./about.html" class="block py-2">About</a>
+                      <a href="./contact.html" class="block py-2">Contact</a>
+                    </div>
+                  </div>
+
+                  <div class="container pt-0 md:pt-14 flex gap-8 md:gap-20 px-[3vw] flex-col md:flex-row">
+                    <div class="left md:w-[40%] w-full">
+                        <div class="image-div w-full md:w-[18rem] h-[22rem] rounded-xl overflow-hidden shadow-lg">
+                            <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="https://i.pinimg.com/564x/22/01/12/220112ce9c3967e2022ce13673a9d4f6.jpg" alt="Profile Image">
+                        </div>
+                    </div>
+                    <div class="right md:w-[60%] w-full md:h-auto mt-8 md:mt-0">
+                        <h2 class="md:text-[3.4rem] text-[8vw] font-bold mb-6">About Me</h2>
+                        <div class="flex flex-col gap-6 md:text-[1.2vw] text-[4vw] md:leading-[2vw] leading-[6vw] text-gray-700">
+                            <p>I'm savya, a Web Developer & Webflow Developer with over 1 years of experience. I'm from India, RJ.</p>
+                            <p>I am passionate about staying updated with the latest design trends to ensure my work is modern and high-quality.</p>
+                            <p>Using the power of Webflow, I bring creative digital ideas to life. Whether you need web design, development, or a blend of both, I offer flexible services to support your website's needs.</p>
+                            <p>I believe thoughtful design can solve problems and create better experiences for users. My focus is on building digital solutions that are both functional and enjoyable.</p>
+                            <div class="contact-btn mt-4">
+                            <a href="./contact.html" class="md:text-[1vw] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                            <i class="ri-corner-down-right-line md:text-[1.1vw]"></i>
+                            Contact Me</a>
+                            </div>
+
+                            <!-- <div class="experiences flex mt-5 gap-1 pt-2" id="experiences">
+                                <div class="w-[0vw] h-[0vh]"></div>
+
+                                <div class="md:w-[30vw] w-[60%] md:h-[20vh] h-[7vh]">
+                                  <div class="flex flex-col items-center gap-3 leading-[3vw]">
+                                    <span class="md:text-[1vw] text-[2.8vw]">Years in design</span>
+                                    <h2 class="text-[7vw]" data-target="5">0</h2>
+                                  </div>
+                                </div>
+
+                                <div class="md:w-[30vw] w-[60%] md:h-[20vh] h-[7vh]">
+                                  <div class="flex flex-col items-center gap-3 leading-[3vw]">
+                                    <span class="md:text-[1vw] text-[2.8vw]">Awwwards and Honors</span>
+                                    <h2 class="text-[7vw]" data-target="20">0</h2>
+                                  </div>
+                                </div>
+
+                                <div class="md:w-[30vw] w-[60%] md:h-[20vh] h-[7vh]">
+                                  <div class="flex flex-col items-center gap-3 leading-[3vw]">
+                                    <span class="md:text-[1vw] text-[2.8vw]">Greenwich Mean Time</span>
+                                    <h2 class="text-[7vw]" data-target="7">0</h2>
+                                  </div>
+                                </div>
+                              </div> -->
+
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <!-- Section Divider: Projects -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-folder-line divider-icon"></i>
+            <div class="divider-text">Projects</div>
+            <i class="ri-folder-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
+          <div class="scroll-indicator">
+            <div class="indicator-line"></div>
+            <div class="indicator-label">Explore more</div>
+          </div>
+        </div>
+
+        <div class="page2 w-full pt-8 md:pt-12 px-[3vw]">
+          <div class="page2Container md:pb-32">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+              <div class="left md:text-[13px] text-[3.5vw] opacity-[.5] font-medium uppercase">Projects</div>
+              <div class="right md:text-[3vw] text-[6vw] md:mr-[28vw]">
+                <h2 class="font-bold">Other projects</h2>
+              </div>
+            </div>
+
+            <div class="project-list w-full pt-4 flex flex-col space-y-1">
+              <!-- Project 1 -->
+              <a href="#" class="project-item relative flex py-3 justify-between items-center border-b-[1px] border-gray-200 overflow-hidden group cursor-pointer hover:border-black transition-colors duration-300">
+                <div class="overlay absolute w-full h-full bg-black/10 bottom-0 left-0 translate-y-full group-hover:translate-y-0 duration-[0.4s]"></div>
+
+                <div class="project-info flex items-center gap-4 md:gap-10 z-10">
+                  <span class="project-number text-[3.5vw] md:text-[1vw] text-gray-500">[01]</span>
+                  <h3 class="project-title text-[3vw] md:text-[1.8vw]">Ochi</h3>
+                </div>
+
+                <div class="project-icon">
+                  <div class="icon-container bg-black rounded-full text-white md:px-[5px] px-[3px] py-[0.6px] md:py-[1.5px] text-[0.9vw]">
+                    <i class="ri-arrow-right-up-line text-[2.5vw] md:text-[1vw]" aria-hidden="true"></i>
+                    <span class="sr-only">View Ochi project</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Project 2 -->
+              <a href="#" class="project-item relative flex py-3 justify-between items-center border-b-[1px] border-gray-200 overflow-hidden group cursor-pointer hover:border-black transition-colors duration-300">
+                <div class="overlay absolute w-full h-full bg-black/10 bottom-0 left-0 translate-y-full group-hover:translate-y-0 duration-[0.4s]"></div>
+
+                <div class="project-info flex items-center gap-4 md:gap-10 z-10">
+                  <span class="project-number text-[3.5vw] md:text-[1vw] text-gray-500">[02]</span>
+                  <h3 class="project-title text-[3vw] md:text-[1.8vw]">Lazarev</h3>
+                </div>
+
+                <div class="project-icon">
+                  <div class="icon-container bg-black rounded-full text-white md:px-[5px] px-[3px] py-[0.6px] md:py-[1.5px] text-[0.9vw]">
+                    <i class="ri-arrow-right-up-line text-[2.5vw] md:text-[1vw]" aria-hidden="true"></i>
+                    <span class="sr-only">View Lazarev project</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Project 3 -->
+              <a href="#" class="project-item relative flex py-3 justify-between items-center border-b-[1px] border-gray-200 overflow-hidden group cursor-pointer hover:border-black transition-colors duration-300">
+                <div class="overlay absolute w-full h-full bg-black/10 bottom-0 left-0 translate-y-full group-hover:translate-y-0 duration-[0.4s]"></div>
+
+                <div class="project-info flex items-center gap-4 md:gap-10 z-10">
+                  <span class="project-number text-[3.5vw] md:text-[1vw] text-gray-500">[03]</span>
+                  <h3 class="project-title text-[3vw] md:text-[1.8vw]">Rejouice</h3>
+                </div>
+
+                <div class="project-icon">
+                  <div class="icon-container bg-black rounded-full text-white md:px-[5px] px-[3px] py-[0.6px] md:py-[1.5px] text-[0.9vw]">
+                    <i class="ri-arrow-right-up-line text-[2.5vw] md:text-[1vw]" aria-hidden="true"></i>
+                    <span class="sr-only">View Rejouice project</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Project 4 -->
+              <a href="#" class="project-item relative flex py-3 justify-between items-center border-b-[1px] border-gray-200 overflow-hidden group cursor-pointer hover:border-black transition-colors duration-300">
+                <div class="overlay absolute w-full h-full bg-black/10 bottom-0 left-0 translate-y-full group-hover:translate-y-0 duration-[0.4s]"></div>
+
+                <div class="project-info flex items-center gap-4 md:gap-10 z-10">
+                  <span class="project-number text-[3.5vw] md:text-[1vw] text-gray-500">[04]</span>
+                  <h3 class="project-title text-[3vw] md:text-[1.8vw]">Ephemeral</h3>
+                </div>
+
+                <div class="project-icon">
+                  <div class="icon-container bg-black rounded-full text-white md:px-[5px] px-[3px] py-[0.6px] md:py-[1.5px] text-[0.9vw]">
+                    <i class="ri-arrow-right-up-line text-[2.5vw] md:text-[1vw]" aria-hidden="true"></i>
+                    <span class="sr-only">View Ephemeral project</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="md:pt-12 md:pb-0 pb-8 pt-8">
+              <a href="./projects.html" class="md:text-[1vw] text-[1rem] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                <i class="ri-corner-down-right-line md:text-[1.1vw] text-[1rem]"></i>
+                View All
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Divider: Let's Work Together -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-chat-smile-line divider-icon"></i>
+            <div class="divider-text">Let's Collaborate</div>
+            <i class="ri-chat-smile-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
+          <div class="scroll-indicator">
+            <div class="indicator-line"></div>
+            <div class="indicator-label">Get in touch</div>
+          </div>
+        </div>
+
+        <div class="page3 w-full px-[3vw] pt-8 md:pt-12">
+          <div class="page3Container md:h-[45vh] pb-6 h-[30vh] md:py-0 flex md:flex-row flex-col justify-between">
+            <div class="left md:text-[13px] text-[3.5vw] opacity-[.5] font-medium uppercase">Let's Work Together</div>
+            <div class="right md:w-[70%]">
+              <h2 class="md:text-[3vw] text-[1.7rem] md:leading-[4rem] leading-[2.3rem] tracking-tight mr-[6vw] font-bold">Would you like to work together?</h2>
+              <h3 class="md:text-[1.4vw] md:py-0 py-3 opacity-[.8]">Let's create something amazing!</h3>
+              <div class="md:text-[1vw] pt-8">
+                <a href="./contact.html" class="md:text-[1vw] text-[1rem] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                  <i class="ri-corner-down-right-line md:text-[1.1vw] text-[1rem]"></i>
+                  Contact Me
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Divider: Footer -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-footprint-line divider-icon"></i>
+            <div class="divider-text">STUDIO-CC</div>
+            <i class="ri-footprint-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
+        </div>
+
+        <div class="footer w-full md:h-[34vh] pt-8 md:pt-12 px-[3vw]">
+          <div class="footerContainer flex md:flex-row flex-col justify-between max-w-7xl mx-auto">
+            <div class="left md:text-[1.5vw] mb-8 md:mb-0">
+              <h3 class="text-2xl md:text-3xl font-bold mb-4">STUDIO-CC</h3>
+              <p class="text-gray-600 max-w-xs text-sm md:text-base mb-6">Creative developer specializing in React.js, motion graphics, and web animations for modern, functional digital experiences.</p>
+              <p class="text-xs text-gray-500">&copy; 2024 All Rights Reserved</p>
+            </div>
+
+            <div class="right md:w-[50vw] w-[100%] md:pt-0 pt-4 flex md:gap-[8vw] gap-[4rem]">
+              <div class="nav-links">
+                <h2 class="md:text-[1.5vw] text-lg font-semibold mb-4">Navigation</h2>
+                <ul class="flex flex-col gap-3 pt-2">
+                  <li>
+                    <a href="./work.html"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Work
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./about.html"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./contact.html"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="social-links">
+                <h2 class="md:text-[1.5vw] text-lg font-semibold mb-4">Connect</h2>
+                <ul class="flex flex-col gap-3 pt-2">
+                  <li>
+                    <a href="#"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-instagram-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Instagram
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-linkedin-box-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        LinkedIn
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-github-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        GitHub
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

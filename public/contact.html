@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | STUDIO-CC</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Section Divider Styles */
+      .section-divider {
+        position: relative;
+        width: 100%;
+        padding: 3rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .divider-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .divider-line {
+        height: 1px;
+        flex-grow: 1;
+        background: linear-gradient(to right, transparent, rgba(0,0,0,0.2), transparent);
+      }
+
+      .divider-icon {
+        margin: 0 1.5rem;
+        opacity: 0.6;
+        transform: rotate(45deg);
+        transition: transform 0.5s ease;
+      }
+
+      .divider-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin: 0 1.5rem;
+        white-space: nowrap;
+      }
+
+      .divider-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.3);
+        margin: 0 1rem;
+      }
+
+      .section-divider:hover .divider-icon {
+        transform: rotate(225deg);
+      }
+
+      .scroll-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        opacity: 0.6;
+      }
+
+      .indicator-line {
+        width: 1px;
+        height: 3rem;
+        background-color: rgba(0,0,0,0.3);
+        position: relative;
+      }
+
+      .indicator-line::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.5);
+      }
+
+      .indicator-label {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 768px) {
+        .section-divider {
+          padding: 2rem 0;
+        }
+
+        .divider-text {
+          font-size: 0.7rem;
+          margin: 0 0.8rem;
+        }
+
+        .divider-icon {
+          margin: 0 0.8rem;
+        }
+
+        .scroll-indicator {
+          margin-top: -0.5rem;
+        }
+
+        .indicator-line {
+          height: 2rem;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <!-- Custom cursor removed -->
+        <div id="page1" class="">
+            <div class="wrapper w-full md:h-[90vh] h-[70vh]">
+                <div class="navigation transition-all duration-300 px-4 top-0 fixed w-full z-10 bg-[#F6F6F6] ">
+                    <nav class="flex justify-between items-center py-2 border-b-[1px] border-black">
+                      <a href="./index.html" class="relative group">
+                        <img class="md:h-[2vw] h-[8vw]" src="./public/logo.png" alt="">
+                        <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                      </a>
+                      <!-- Links for desktop -->
+
+                      <div class="links hidden md:flex mr-[30vw] gap-5 text-[14px] font-medium tracking-wide">
+                        <div class="flex ">
+                          <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
+                          <a href="./work.html" class="flex items-center relative group hover:text-gray-800 transition-colors duration-300">
+                            Portfolio
+                            <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                          </a>
+                        </div>
+                        <div class="flex">
+                          <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
+                          <a href="./about.html" class="flex items-center relative group hover:text-gray-800 transition-colors duration-300">
+                            About Me
+                            <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                          </a>
+                        </div>
+                        <div class="flex">
+                          <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
+                          <a href="./contact.html" class="flex items-center relative group hover:text-gray-800 transition-colors duration-300">
+                            Get in Touch
+                            <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
+                          </a>
+                        </div>
+                      </div>
+
+                      <!-- Hamburger icon for mobile -->
+
+                      <div class="block md:hidden">
+                        <button id="hamburger" class="hamburger-menu text-[1.5rem] focus:outline-none">
+                          ☰
+                        </button>
+                      </div>
+                    </nav>
+                  </div>
+                  <!-- Overlay (hidden initially, only for mobile) -->
+                  <div id="overlay" class="fixed inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none md:hidden"></div>
+
+                  <!-- Side Navbar with close Icon -->
+                  <div id="sideNav" class="fixed top-0 h-full w-full z-[11] bg-[#F6F6F6] shadow-lg transform -translate-y-full transition-transform duration-300 md:hidden">
+                    <div class="p-5 flex flex-col justify-center items-center text-[8vw]">
+                      <button id="closeNav" class="text-[1.5rem] mb-4 focus:outline-none self-end">
+                        ✕
+                      </button>
+                      <a href="./work.html" class="block py-2">Work</a>
+                      <a href="./about.html" class="block py-2">About</a>
+                      <a href="./contact.html" class="block py-2">Contact</a>
+                    </div>
+                  </div>
+
+
+                <div class="container flex flex-col md:flex-row px-4 md:px-[3vw] pt-8 pb-[2vw] justify-between">
+                    <div class="left md:w-[50%] w-[40%]">
+                        <!-- Left column intentionally kept empty as per original design -->
+                    </div>
+
+                    <div class="right md:w-[50%] pt-4">
+                        <div class="heading mb-6">
+                            <h2 class="text-[3.4rem] mb-3 font-bold tracking-wider uppercase">STUDIO-CC</h2>
+                            <p class="md:text-[1.4vw] md:leading-[2vw] leading-[1.8rem] md:w-[90%] text-gray-700">Please fill out the form for inquiries, collaborations, or just to say "Hi," and I will get back to you within 2 business days.</p>
+                        </div>
+                        <div class="formSection">
+                            <div class="w-full max-w-md md:pt-4">
+                                <form class="space-y-4 md:text-[1vw] text-[1rem]">
+                                  <div class="mb-2">
+                                    <input type="text" placeholder="Name*" required class="md:w-full w-[90vw] pt-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-black placeholder-gray-500 bg-transparent transition-colors duration-300">
+                                  </div>
+                                  <div class="mb-2">
+                                    <input type="email" placeholder="Email*" required class="md:w-full w-[90vw] pt-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-black placeholder-gray-500 bg-transparent transition-colors duration-300">
+                                  </div>
+                                  <div class="mb-2">
+                                    <input type="text" placeholder="Subject*" required class="md:w-full w-[90vw] pt-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-black placeholder-gray-500 bg-transparent transition-colors duration-300">
+                                  </div>
+                                  <div class="mb-4">
+                                    <textarea placeholder="Message*" required rows="4" class="md:w-full w-[90vw] pt-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-black placeholder-gray-500 resize-none bg-transparent transition-colors duration-300"></textarea>
+                                  </div>
+                                  <div class="send-link pt-2">
+                                    <a href="#" class="md:text-[1vw] text-[1rem] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[1rem]"></i>
+                                      Send
+                                    </a>
+                                  </div>
+                                </form>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Divider: Footer -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-footprint-line divider-icon"></i>
+            <div class="divider-text">STUDIO-CC</div>
+            <i class="ri-footprint-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
+        </div>
+
+        <div class="footer w-full md:h-[34vh] pt-8 md:pt-12 px-[3vw]">
+          <div class="footerContainer flex md:flex-row flex-col justify-between max-w-7xl mx-auto">
+            <div class="left md:text-[1.5vw] mb-8 md:mb-0">
+              <h3 class="text-2xl md:text-3xl font-bold mb-4">STUDIO-CC</h3>
+              <p class="text-gray-600 max-w-xs text-sm md:text-base mb-6">Creative developer specializing in React.js, motion graphics, and web animations for modern, functional digital experiences.</p>
+              <p class="text-xs text-gray-500">&copy; 2024 All Rights Reserved</p>
+            </div>
+
+            <div class="right md:w-[50vw] w-[100%] md:pt-0 pt-4 flex md:gap-[8vw] gap-[4rem]">
+              <div class="nav-links">
+                <h2 class="md:text-[1.5vw] text-lg font-semibold mb-4">Navigation</h2>
+                <ul class="flex flex-col gap-3 pt-2">
+                  <li>
+                    <a href="./work.html"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Work
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./about.html"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./contact.html"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="social-links">
+                <h2 class="md:text-[1.5vw] text-lg font-semibold mb-4">Connect</h2>
+                <ul class="flex flex-col gap-3 pt-2">
+                  <li>
+                    <a href="#"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-instagram-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Instagram
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-linkedin-box-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        LinkedIn
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-github-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        GitHub
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
