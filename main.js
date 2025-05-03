@@ -112,7 +112,9 @@ function hamburgerMenu() {
 // Update India Time
 function updateIndiaTime() {
   const indiaTimeElement = document.getElementById('india-time');
-  if (indiaTimeElement) {
+  const mobileIndiaTimeElement = document.getElementById('mobile-india-time');
+
+  if (indiaTimeElement || mobileIndiaTimeElement) {
     // Create a date object with the current time
     const now = new Date();
 
@@ -126,8 +128,18 @@ function updateIndiaTime() {
     const formattedHours = hours % 12 || 12; // Convert to 12-hour format
     const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
-    // Update the element
-    indiaTimeElement.textContent = `${formattedHours}:${formattedMinutes} ${ampm} IST`;
+    // Format the time string
+    const timeString = `${formattedHours}:${formattedMinutes} ${ampm} IST`;
+
+    // Update desktop time element if it exists
+    if (indiaTimeElement) {
+      indiaTimeElement.textContent = timeString;
+    }
+
+    // Update mobile time element if it exists
+    if (mobileIndiaTimeElement) {
+      mobileIndiaTimeElement.textContent = timeString;
+    }
   }
 }
 

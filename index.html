@@ -213,25 +213,49 @@
           </div>
         </div>
 
-        <div class="contianer flex flex-col md:flex-row justify-between md:pt-16 px-4">
-          <div class="left md:text-[13px] opacity-[.5] md:mt-[0rem] mt-[3rem]">[Folio'24]</div>
-          <div class="right md:w-[65%] mr-20 flex flex-col md:flex-row">
+        <div class="container flex flex-col md:flex-row justify-between md:pt-16 px-4">
+          <div class="left text-[13px] opacity-[.5] md:mt-0 mt-[4rem]">[Folio'24]</div>
+          <div class="right md:w-[65%] md:mr-20 flex flex-col">
             <div class="main-content">
               <h1
-                class="md:text-[9rem] text-[2.5rem] md:pt-0 pt-8 leading-[2.5rem] md:leading-[7rem] font-bold tracking-wider uppercase whitespace-nowrap">
+                class="text-[2.5rem] md:text-[9rem] pt-6 md:pt-0 leading-[1.1] md:leading-[7rem] font-bold tracking-wider uppercase">
                 STUDIO-CC</h1>
 
-              <div class="w-full flex md:flex-row md:justify-between gap-20 md:items-start">
-                <p class="md:w-[50%] py-4 md:leading-[2vw] leading-[6vw] md:text-[1.3vw]">I specialize in crafting
-                  user-centric designs that are visually
+              <div class="w-full flex flex-col md:flex-row md:justify-between md:gap-20 gap-6 md:items-start mt-6 md:mt-0">
+                <p class="md:w-[50%] py-2 md:py-4 leading-relaxed md:leading-[2vw] text-base md:text-[1.3vw]">
+                  I specialize in crafting user-centric designs that are visually
                   striking and intuitive. I bring a unique combination of creativity and technical skill to every
                   project.
                 </p>
-                <div class="link-info pt-3 w-[10%] flex flex-col justify-center gap-2">
-                  <a href="">Instagram</a>
-                  <a href="">YouTube</a>
-                  <a href="">LinkedIn</a>
+
+                <!-- Mobile location info (visible only on mobile) -->
+                <div class="flex md:hidden justify-between items-center w-full border-t border-b border-gray-200 py-3 my-4">
+                  <div class="time-info">
+                    <p class="text-xs uppercase tracking-wider opacity-60 mb-1">Current Time</p>
+                    <p class="text-base font-medium" id="mobile-india-time">Loading...</p>
+                  </div>
+                  <div class="location">
+                    <p class="text-xs uppercase tracking-wider opacity-60 text-right mb-1">Location</p>
+                    <p class="text-base font-medium text-right">India, Rajasthan</p>
+                  </div>
                 </div>
+
+                <div class="link-info pt-3 flex flex-row md:flex-col justify-start md:justify-center gap-4 md:gap-2">
+                  <a href="#" class="flex items-center gap-1 hover:text-gray-600 transition-colors">
+                    <i class="ri-instagram-line"></i>
+                    <span>Instagram</span>
+                  </a>
+                  <a href="#" class="flex items-center gap-1 hover:text-gray-600 transition-colors">
+                    <i class="ri-youtube-line"></i>
+                    <span>YouTube</span>
+                  </a>
+                  <a href="#" class="flex items-center gap-1 hover:text-gray-600 transition-colors">
+                    <i class="ri-linkedin-box-line"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+
+                <!-- Desktop location info (visible only on desktop) -->
                 <div class="location-info pt-3 hidden md:flex md:flex-col md:justify-center md:w-[15%] text-gray-700">
                   <div class="time-info mb-6">
                     <p class="md:text-[1.2vw] text-sm uppercase tracking-wider opacity-60">Current Time</p>
@@ -252,23 +276,20 @@
                 </div>
               </div>
 
-
-              <div class="">
+              <div class="mt-6 md:mt-4">
                 <a href="./contact.html"
-                  class="md:text-[1vw] text-[1rem] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
-                  <i class="ri-corner-down-right-line md:text-[1.1vw]"></i>
+                  class="text-[1rem] md:text-[1vw] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                  <i class="ri-corner-down-right-line"></i>
                   Contact Me
                 </a>
               </div>
             </div>
-
-
           </div>
         </div>
-        <div class="image-showcase w-full md:mt-[3rem]">
+        <div class="image-showcase w-full mt-8 md:mt-[3rem]">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 px-4 md:px-0">
             <!-- Main featured image -->
-            <div class="md:col-span-8 relative overflow-hidden group h-[40vh] md:h-[70vh]">
+            <div class="md:col-span-8 relative overflow-hidden group h-[45vh] md:h-[70vh] rounded-lg md:rounded-none">
               <div
                 class="absolute inset-0 bg-black/5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               </div>
@@ -294,25 +315,25 @@
             <div class="md:col-span-4 flex flex-col gap-4 md:gap-6">
               <!-- Top panel: Project stats -->
               <div
-                class="bg-[#F6F6F6] border border-black/10 p-4 md:p-6 rounded-lg h-[25vh] md:h-[34vh] flex flex-col justify-between">
+                class="bg-[#F6F6F6] border border-black/10 p-4 md:p-6 rounded-lg h-auto md:h-[34vh] flex flex-col justify-between">
                 <div>
                   <h3 class="text-lg md:text-xl font-medium mb-4">Project Highlights</h3>
                   <div class="space-y-3">
                     <div class="flex justify-between items-center">
-                      <span class="text-sm md:text-[1.2vw] opacity-60">Type</span>
-                      <span class="text-sm md:text-[1.2vw] font-medium">Creative Direction</span>
+                      <span class="text-sm opacity-60">Type</span>
+                      <span class="text-sm font-medium">Creative Direction</span>
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-sm md:text-[1.2vw] opacity-60">Year</span>
-                      <span class="text-sm md:text-[1.2vw] font-medium">2024</span>
+                      <span class="text-sm opacity-60">Year</span>
+                      <span class="text-sm font-medium">2024</span>
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-sm md:text-[1.2vw] opacity-60">Client</span>
-                      <span class="text-sm md:text-[1.2vw] font-medium">STUDIO-CC</span>
+                      <span class="text-sm opacity-60">Client</span>
+                      <span class="text-sm font-medium">STUDIO-CC</span>
                     </div>
                   </div>
                 </div>
-                <a href="./work.html" class="text-sm md:text-[1.2vw] flex items-center gap-2 group">
+                <a href="./work.html" class="text-sm flex items-center gap-2 group mt-4 md:mt-0">
                   <i class="ri-corner-down-right-line"></i>
                   <span class="relative">
                     View all projects
@@ -328,7 +349,7 @@
                   class="w-full h-full object-cover transition-transform duration-700 ease-out transform scale-100 group-hover:scale-[1.05]"
                   src="./public/bg1.jpeg" alt="Secondary Image" style="filter: grayscale(100%)">
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center p-4 md:p-6">
-                  <p class="text-white text-center md:text-[1.2vw]">"Design is intelligence made visible."</p>
+                  <p class="text-white text-center text-sm md:text-[1.2vw]">"Design is intelligence made visible."</p>
                 </div>
               </div>
             </div>
@@ -355,17 +376,14 @@
       </div>
     </div>
 
-    <div class="page2 w-full px-[3vw] pt-8 md:pt-12 pb-[2vw]">
-      <div class="page2Container flex flex-col md:flex-row justify-between pb-10 md:pb-16">
-        <div class="left md:text-left mb-4 md:mb-0 md:text-[13px] text-[3.5vw] opacity-[.5] font-medium uppercase">About
-        </div>
+    <div class="page2 w-full px-4 md:px-[3vw] pt-8 md:pt-12 pb-6 md:pb-[2vw]">
+      <div class="page2Container flex flex-col md:flex-row justify-between pb-8 md:pb-16">
+        <div class="left text-left mb-4 md:mb-0 text-[13px] opacity-[.5] font-medium uppercase">About</div>
         <div class="right md:w-[75%]">
           <div class="about-content">
-            <h1 class="md:text-[2.3rem] text-[1.5rem] leading-[1.8rem] md:leading-[2.4rem] font-bold mb-8 md:mb-10">
+            <h1 class="text-[1.5rem] md:text-[2.3rem] leading-[1.8rem] md:leading-[2.4rem] font-bold mb-6 md:mb-10">
               My design journey started with a passion for creating intuitive and visually captivating experiences,
-              driven by the
-              transformative impact of design in solving problems and enhancing user interactions with technology. My
-              aim is to develop digital experiences that blend functionality with delight.
+              driven by the transformative impact of design in solving problems and enhancing user interactions with technology.
             </h1>
 
             <div class="about-details w-full">
@@ -378,8 +396,8 @@
                   </p>
                   <div class="about-link mt-4 md:mt-8">
                     <a href="./about.html"
-                      class="md:text-[1vw] text-[1rem] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
-                      <i class="ri-corner-down-right-line md:text-[1.1vw]"></i>
+                      class="text-[1rem] md:text-[1vw] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                      <i class="ri-corner-down-right-line"></i>
                       Learn More About Me
                     </a>
                   </div>
@@ -390,6 +408,18 @@
                     When I'm not designing or developing, I explore the vibrant Los Angeles neighborhood, seek
                     inspiration in nature, and continuously learn new things to improve my design skills.
                   </p>
+                </div>
+              </div>
+
+              <!-- Skills section for mobile -->
+              <div class="md:hidden mt-8 border-t border-gray-200 pt-6">
+                <h3 class="text-lg font-medium mb-4">Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">React.js</span>
+                  <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">UI/UX Design</span>
+                  <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Motion Graphics</span>
+                  <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Web Animation</span>
+                  <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Responsive Design</span>
                 </div>
               </div>
 
