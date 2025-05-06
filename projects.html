@@ -3,11 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Projects | STUDIO-CC</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css"
-    rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Section Divider Styles */
+      .section-divider {
+        position: relative;
+        width: 100%;
+        padding: 3rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex-direction: column;
+      }
+
+      .divider-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .divider-line {
+        height: 1px;
+        flex-grow: 1;
+        background: linear-gradient(to right, transparent, rgba(0,0,0,0.2), transparent);
+      }
+
+      .divider-icon {
+        margin: 0 1.5rem;
+        opacity: 0.6;
+        transform: rotate(45deg);
+        transition: transform 0.5s ease;
+      }
+
+      .divider-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin: 0 1.5rem;
+        white-space: nowrap;
+      }
+
+      .divider-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.3);
+        margin: 0 1rem;
+      }
+
+      .section-divider:hover .divider-icon {
+        transform: rotate(225deg);
+      }
+
+      .scroll-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+        opacity: 0.6;
+      }
+
+      .indicator-line {
+        width: 1px;
+        height: 3rem;
+        background-color: rgba(0,0,0,0.3);
+        position: relative;
+      }
+
+      .indicator-line::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.5);
+      }
+
+      .indicator-label {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 768px) {
+        .section-divider {
+          padding: 2rem 0;
+        }
+
+        .divider-text {
+          font-size: 0.7rem;
+          margin: 0 0.8rem;
+        }
+
+        .divider-icon {
+          margin: 0 0.8rem;
+        }
+
+        .indicator-line {
+          height: 2rem;
+        }
+      }
+    </style>
 </head>
 <body>
 
@@ -15,14 +124,14 @@
     <div class="cursor" id="cursor"></div>
         <div id="page1">
             <div class="page1Container">
-                <div class="navigation transition-all duration-300 top-0 fixed w-full z-10 bg-[#F6F6F6] px-4">
+                <div class="navigation transition-all duration-300 top-0 fixed w-full z-10 backdrop-blur-md bg-[#F6F6F6]/80 px-4">
                     <nav class="flex justify-between items-center py-2 border-b-[1px] border-black">
-                        <a href="./index.html">
-                          <img class="md:h-[2vw] h-[8vw]" src="./public/logo.png" alt="">
+                        <a href="./index.html" class="relative group">
+                          <img class="md:h-[2vw] h-[8vw]" src="./public/logo.png" alt="STUDIO-CC Logo">
+                          <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-800 group-hover:w-full transition-all duration-300"></div>
                         </a>
 
                       <!-- Links for desktop -->
-
                       <div class="links hidden md:flex mr-[30vw] gap-5 text-[14px] font-medium tracking-wide">
                         <div class="flex ">
                           <i class="ri-corner-down-right-line text-[1.1vw] cursor-pointer"></i>
@@ -47,9 +156,7 @@
                         </div>
                       </div>
 
-
                       <!-- Hamburger icon for mobile -->
-
                       <div class="block md:hidden">
                         <button id="hamburger" class="hamburger-menu text-[1.5rem] focus:outline-none">
                           ☰
@@ -57,127 +164,165 @@
                       </div>
                     </nav>
                   </div>
-                  <!-- Overlay (hidden initially, only for mobile) -->
 
+                  <!-- Overlay (hidden initially, only for mobile) -->
                   <div id="overlay" class="fixed inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none md:hidden"></div>
 
                   <!-- Side Navbar with Close Icon (only for mobile) -->
-
                   <div id="sideNav" class="fixed top-0 h-full w-full z-[11] bg-[#F6F6F6] shadow-lg transform -translate-y-full transition-transform duration-300 md:hidden">
                     <div class="p-5 flex flex-col justify-center items-center text-[8vw]">
                       <button id="closeNav" class="text-[1.5rem] mb-4 focus:outline-none self-end">
                         ✕
                       </button>
                       <a href="./work.html" class="block py-2">Work</a>
-                      <a href="#" class="block py-2">About</a>
-                      <a href="#" class="block py-2">Contact</a>
+                      <a href="./about.html" class="block py-2">About</a>
+                      <a href="./contact.html" class="block py-2">Contact</a>
                     </div>
                   </div>
             </div>
         </div>
 
-        <div class="page2 w-full text-center pt-16 px-4">
-          <div class="page2Container border-b-[1px] md:pb-32 border-black">
-            <div class="flex justify-between gap-14">
-              <div class="left md:text-[13px] text-[1rem] opacity-[.5]">Projects</div>
-              <div class="right md:text-[3vw] text-[2rem] md:mr-[28vw]">
-                <h2>Other projects</h2>
-              </div>
+        <!-- Section Divider: Projects -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-folder-line divider-icon"></i>
+            <div class="divider-text">All Projects</div>
+            <i class="ri-folder-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
+        </div>
 
+        <div class="page2 w-full pt-16 px-4 md:px-8">
+          <div class="page2Container max-w-7xl mx-auto border-b border-black pb-8 md:pb-16">
+            <div class="flex flex-col md:flex-row justify-between md:items-center mb-8">
+              <div class="left text-[13px] opacity-[.5] uppercase font-medium mb-2 md:mb-0 text-left">Projects</div>
+              <div class="right">
+                <h2 class="text-2xl md:text-[3vw] font-bold text-left md:text-left">Other Projects</h2>
+              </div>
             </div>
-            <div class="holder w-full text-[1vw] pt-8">
-              <div class="subhead flex justify-between opacity-[.5] border-b-[1px] md:text-[1vw] text-[3vw] border-zinc-400 py-2">
-                <span>Project</span>
-                <span>Type</span>
-                <span>MM/YYYY</span>
-                <span>link</span>
+
+            <div class="holder w-full pt-4 md:pt-8">
+              <!-- Table header - improved for better visibility -->
+              <div class="flex justify-between opacity-[.6] border-b-[1px] border-zinc-400 py-3 text-sm md:text-[1vw] uppercase tracking-wider font-medium">
+                <span class="w-[30%] text-left">Project</span>
+                <span class="w-[30%] text-left hidden md:block">Type</span>
+                <span class="w-[20%] text-left hidden md:block">MM/YYYY</span>
+                <span class="w-[20%] text-right md:text-center">Link</span>
               </div>
 
               <div class="opacity-[.9]">
-                <a href="#" class="flex justify-between border-b-[1px] border-zinc-400 py-2 relative group overflow-hidden">
-                  <h5 class="font-[font2] md:text-[1vw] text-[2.8vw]">Ochi</h5>
-                  <h5 class="md:text-[1vw] text-[2.8vw]">Creative</h5>
-                  <h3 class="md:text-[1vw] text-[2.8vw]">jul 2024</h3>
-                  <i class="ri-corner-down-right-line text-[3vw] md:text-[1.4vw] opacity-[.7]"></i>
-                  <div
-                    class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]">
+                <!-- Project 1 - keeping original animations -->
+                <a href="#" class="flex flex-wrap md:flex-nowrap justify-between border-b-[1px] border-zinc-400 py-4 md:py-3 relative group overflow-hidden">
+                  <h5 class="font-medium md:text-[1vw] text-[1.1rem] w-full md:w-[30%] mb-1 md:mb-0">Ochi Design</h5>
+                  <h5 class="md:text-[1vw] text-sm w-1/2 md:w-[30%] text-gray-600">Creative Agency</h5>
+                  <h3 class="md:text-[1vw] text-sm w-1/2 md:w-[20%] text-right md:text-left">Jul 2024</h3>
+                  <div class="w-full md:w-[20%] mt-2 md:mt-0 text-right md:text-center">
+                    <i class="ri-corner-down-right-line text-[1.2rem] md:text-[1.4vw] opacity-[.7] group-hover:rotate-45 transition-transform duration-300"></i>
                   </div>
-                  <div
-                    class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]">
-                  </div>
+                  <!-- Keeping original animations -->
+                  <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]"></div>
+                  <div class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]"></div>
                 </a>
 
-                <a href="#" class="flex justify-between border-b-[1px] border-zinc-400 py-2 relative group overflow-hidden">
-                  <h5 class="font-[font2] md:text-[1vw] text-[2.8vw]">Lazarev</h5>
-                  <h5 class="md:text-[1vw] text-[2.8vw]">AI design agency</h5>
-                  <h3 class="md:text-[1vw] text-[2.8vw]">feb 2023</h3>
-                  <i class="ri-corner-down-right-line text-[3vw] md:text-[1.4vw] opacity-[.7]"></i>
-                  <div
-                    class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]">
+                <!-- Project 2 - keeping original animations -->
+                <a href="#" class="flex flex-wrap md:flex-nowrap justify-between border-b-[1px] border-zinc-400 py-4 md:py-3 relative group overflow-hidden">
+                  <h5 class="font-medium md:text-[1vw] text-[1.1rem] w-full md:w-[30%] mb-1 md:mb-0">Lazarev Studio</h5>
+                  <h5 class="md:text-[1vw] text-sm w-1/2 md:w-[30%] text-gray-600">AI Design Agency</h5>
+                  <h3 class="md:text-[1vw] text-sm w-1/2 md:w-[20%] text-right md:text-left">Feb 2023</h3>
+                  <div class="w-full md:w-[20%] mt-2 md:mt-0 text-right md:text-center">
+                    <i class="ri-corner-down-right-line text-[1.2rem] md:text-[1.4vw] opacity-[.7] group-hover:rotate-45 transition-transform duration-300"></i>
                   </div>
-                  <div
-                    class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]">
-                  </div>
+                  <!-- Keeping original animations -->
+                  <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]"></div>
+                  <div class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]"></div>
                 </a>
 
-                <a href="#" class="flex justify-between border-b-[1px] border-zinc-400 py-2 relative group overflow-hidden">
-                  <h5 class="font-[font2] md:text-[1vw] text-[2.8vw]">Rejouice</h5>
-                  <h5 class="md:text-[1vw] text-[2.8vw]">The venture agency</h5>
-                  <h3 class="md:text-[1vw] text-[2.8vw]">sep 2023</h3>
-                  <i class="ri-corner-down-right-line text-[3vw] md:text-[1.4vw] opacity-[.7]"></i>
-                  <div
-                    class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]">
+                <!-- Project 3 - keeping original animations -->
+                <a href="#" class="flex flex-wrap md:flex-nowrap justify-between border-b-[1px] border-zinc-400 py-4 md:py-3 relative group overflow-hidden">
+                  <h5 class="font-medium md:text-[1vw] text-[1.1rem] w-full md:w-[30%] mb-1 md:mb-0">Rejouice</h5>
+                  <h5 class="md:text-[1vw] text-sm w-1/2 md:w-[30%] text-gray-600">Venture Agency</h5>
+                  <h3 class="md:text-[1vw] text-sm w-1/2 md:w-[20%] text-right md:text-left">Sep 2023</h3>
+                  <div class="w-full md:w-[20%] mt-2 md:mt-0 text-right md:text-center">
+                    <i class="ri-corner-down-right-line text-[1.2rem] md:text-[1.4vw] opacity-[.7] group-hover:rotate-45 transition-transform duration-300"></i>
                   </div>
-                  <div
-                    class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]">
-                  </div>
+                  <!-- Keeping original animations -->
+                  <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]"></div>
+                  <div class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]"></div>
                 </a>
 
-                <a href="#" class="flex justify-between border-b-[1px] border-zinc-400 py-2 relative group overflow-hidden">
-                  <h5 class="font-[font2] md:text-[1vw] text-[2.8vw]">Ephemeral</h5>
-                  <h5 class="md:text-[1vw] text-[2.8vw]">Design art</h5>
-                  <h3 class="md:text-[1vw] text-[2.8vw]">sep 2023</h3>
-                  <i class="ri-corner-down-right-line text-[3vw] md:text-[1.4vw] opacity-[.7]"></i>
-                  <div
-                    class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]">
+                <!-- Project 4 - keeping original animations -->
+                <a href="#" class="flex flex-wrap md:flex-nowrap justify-between border-b-[1px] border-zinc-400 py-4 md:py-3 relative group overflow-hidden">
+                  <h5 class="font-medium md:text-[1vw] text-[1.1rem] w-full md:w-[30%] mb-1 md:mb-0">Ephemeral</h5>
+                  <h5 class="md:text-[1vw] text-sm w-1/2 md:w-[30%] text-gray-600">Design Art</h5>
+                  <h3 class="md:text-[1vw] text-sm w-1/2 md:w-[20%] text-right md:text-left">Sep 2023</h3>
+                  <div class="w-full md:w-[20%] mt-2 md:mt-0 text-right md:text-center">
+                    <i class="ri-corner-down-right-line text-[1.2rem] md:text-[1.4vw] opacity-[.7] group-hover:rotate-45 transition-transform duration-300"></i>
                   </div>
-                  <div
-                    class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]">
-                  </div>
+                  <!-- Keeping original animations -->
+                  <div class="absolute bottom-0 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-[0.4s]"></div>
+                  <div class="absolute bottom-0 left-0 w-full h-full bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[0.5s]"></div>
                 </a>
               </div>
+            </div>
 
-            </div>
-            <div class="md:pt-12 md:pb-0 pb-8 pt-8">
-              <a class="md:text-[1vw] text-[1rem]" href="./projects.html"><i class="ri-corner-down-right-line md:text-[1.1vw] text-[1rem]"></i><u>View
-                  All</u></a>
-            </div>
           </div>
         </div>
 
+        <!-- Section Divider: Let's Work Together -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-chat-smile-line divider-icon"></i>
+            <div class="divider-text">Let's Collaborate</div>
+            <i class="ri-chat-smile-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
 
-        <div class="page3 w-full px-4 pt-4">
-          <div class="page3Container md:h-[45vh] pb-6 h-[30vh] md:py-0 flex md:flex-row flex-col justify-between border-b-[1px] border-black">
-            <div class="left md:text-[13px] opacity-[.5]">Let's Work Together</div>
-            <div class="right">
-              <h2 class="md:text-[3vw] text-[1.7rem] md:leading-[4rem] leading-[2.3rem] tracking-tight mr-[6vw]">Would you link to work together?</h2>
+        </div>
+
+        <div class="page3 w-full px-[3vw] pt-8 md:pt-12">
+          <div
+            class="page3Container md:h-[45vh] pb-6 h-[30vh] md:py-0 flex md:flex-row flex-col justify-between">
+            <div class="left md:text-[13px] text-[3.5vw] opacity-[.5] font-medium uppercase">Let's Work Together</div>
+            <div class="right md:w-[70%]">
+              <h2 class="md:text-[3vw] text-[1.7rem] md:leading-[4rem] leading-[2.3rem] tracking-tight mr-[6vw] font-bold">
+                Would you like to work together?</h2>
               <h3 class="md:text-[1.4vw] md:py-0 py-3 opacity-[.8]">Let's create something amazing!</h3>
-              <div class="text-[1vw] pt-8">
-                <i class="ri-corner-down-right-line md:text-[1.1vw] text-[1rem]"></i>
-                <a href="./contact.html"><u>Contact Me</u></a>
+              <div class="md:text-[1vw] pt-8">
+                <a href="./contact.html"
+                  class="md:text-[1vw] text-[1rem] inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg transition-all duration-300 hover:bg-black/70 hover:backdrop-blur-md hover:shadow-[0_0_15px_rgba(255,192,203,0.5)] hover:border-pink-200/30 border border-transparent">
+                  <i class="ri-corner-down-right-line md:text-[1.1vw] text-[1rem]"></i>
+                  Contact Me
+                </a>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Section Divider: Footer -->
+        <div class="section-divider">
+          <div class="divider-content">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <i class="ri-footprint-line divider-icon"></i>
+            <div class="divider-text">STUDIO-CC</div>
+            <i class="ri-footprint-line divider-icon"></i>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
+        </div>
 
-
-        <div class="footer w-full md:h-[34vh] pt-8 md:pt-12 px-[3vw] bg-gray-50">
+        <div class="footer w-full md:h-[34vh] pt-8 md:pt-12 px-[3vw]">
           <div class="footerContainer flex md:flex-row flex-col justify-between max-w-7xl mx-auto">
             <div class="left md:text-[1.5vw] mb-8 md:mb-0">
-              <h3 class="text-2xl md:text-3xl font-bold mb-4">Savya</h3>
-              <p class="text-gray-600 max-w-xs text-sm md:text-base mb-6">Web Developer & Webflow Developer creating modern, functional digital experiences.</p>
-              <p class="text-xs text-gray-500">&copy; 2023 All Rights Reserved</p>
+              <h3 class="text-2xl md:text-3xl font-bold mb-4">STUDIO-CC</h3>
+              <p class="text-gray-600 max-w-xs text-sm md:text-base mb-6">Creative developer specializing in React.js, motion graphics, and web animations for modern, functional digital experiences.</p>
+              <p class="text-xs text-gray-500">&copy; 2024 All Rights Reserved</p>
             </div>
 
             <div class="right md:w-[50vw] w-[100%] md:pt-0 pt-4 flex md:gap-[8vw] gap-[4rem]">
@@ -185,21 +330,30 @@
                 <h2 class="md:text-[1.5vw] text-lg font-semibold mb-4">Navigation</h2>
                 <ul class="flex flex-col gap-3 pt-2">
                   <li>
-                    <a href="./work.html" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300">
-                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem]"></i>
-                      <span>Work</span>
+                    <a href="./work.html" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Work
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
                     </a>
                   </li>
                   <li>
-                    <a href="./about.html" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300">
-                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem]"></i>
-                      <span>About</span>
+                    <a href="./about.html" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
                     </a>
                   </li>
                   <li>
-                    <a href="./contact.html" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300">
-                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem]"></i>
-                      <span>Contact</span>
+                    <a href="./contact.html" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-corner-down-right-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
                     </a>
                   </li>
                 </ul>
@@ -209,21 +363,30 @@
                 <h2 class="md:text-[1.5vw] text-lg font-semibold mb-4">Connect</h2>
                 <ul class="flex flex-col gap-3 pt-2">
                   <li>
-                    <a href="#" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300">
-                      <i class="ri-instagram-line md:text-[1.1vw] text-[0.8rem]"></i>
-                      <span>Instagram</span>
+                    <a href="#" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-instagram-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        Instagram
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300">
-                      <i class="ri-linkedin-box-line md:text-[1.1vw] text-[0.8rem]"></i>
-                      <span>LinkedIn</span>
+                    <a href="#" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-linkedin-box-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        LinkedIn
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300">
-                      <i class="ri-github-line md:text-[1.1vw] text-[0.8rem]"></i>
-                      <span>GitHub</span>
+                    <a href="#" class="md:text-[1.2vw] text-[4vw] flex items-center gap-2 hover:translate-x-1 transition-transform duration-300 group">
+                      <i class="ri-github-line md:text-[1.1vw] text-[0.8rem] group-hover:rotate-45 transition-transform duration-300"></i>
+                      <span class="relative">
+                        GitHub
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black group-hover:w-full transition-all duration-300"></span>
+                      </span>
                     </a>
                   </li>
                 </ul>
